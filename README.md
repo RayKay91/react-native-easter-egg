@@ -2,6 +2,11 @@
 
 A fun little easter egg to include in your app. A component that accepts gestures and will match them to a secret code for your users to input.
 
+
+<img src='./sample-img.gif' height='30%' width='30%' />
+
+
+
 ## Installation
 
 ```sh
