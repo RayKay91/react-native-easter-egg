@@ -74,7 +74,7 @@ export function EasterEgg({
       props.onGestureStart?.();
 
       const didStartMovingOnXAxis =
-        Math.abs(e.velocityX) > Math.abs(e.velocityY);
+        Math.abs(e.translationX) > Math.abs(e.translationY);
 
       lock.value = didStartMovingOnXAxis ? AxisLock.X : AxisLock.Y;
       setTimeout(() => (inputs.value = []), resetTimer);
@@ -103,8 +103,6 @@ export function EasterEgg({
   );
   const onEnd = useCallback(
     (e: GestureUpdateEvent<PanGestureHandlerEventPayload>) => {
-      props.onGestureEnd?.();
-
       const fingerDidGoRight = e.translationX > 0;
       const fingerDidGoDown = e.translationY > 0;
 
@@ -115,6 +113,7 @@ export function EasterEgg({
       } else {
         inputs.value.push(fingerDidGoDown ? Directions.DOWN : Directions.UP);
       }
+      props.onGestureEnd?.();
       x.value = withSpring(0);
       y.value = withSpring(0);
       lock.value = null;
@@ -148,6 +147,7 @@ export function EasterEgg({
 
   return (
     <GestureDetector gesture={panGesture}>
+      {/* @ts-ignore @todo solve resolution of element type. */}
       <Reanimated.View style={animatedStyle}>{props.children}</Reanimated.View>
     </GestureDetector>
   );
