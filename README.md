@@ -2,16 +2,17 @@
 
 A fun little easter egg to include in your app. A component that accepts gestures and will match them to a secret code for your users to input.
 
-
 <img src='./sample-img.gif' height='30%' width='30%' />
-
-
 
 ## Installation
 
 ```sh
 npm install react-native-easter-egg
 ```
+
+**Note**
+
+Since this package relies on react-native-gesture-handler and react-native-reanimated (they are peer dependencies) please see the installation instructions for those if you're getting errors. The gesture handler for example requires that the app be wrapped in a `<GestureHandlerRootView />`, and reanimated requires you to update the babel config by adding a plugin.
 
 ## Usage
 
@@ -29,8 +30,6 @@ Import the `<EasterEgg />` component and wrap your component with it. It will al
 | dragResistance          | 4                                                                                                                                         | Determines how difficult it feels to move the content in a direction. The higher the number the more difficult it will feel.                                                                                      |
 | resetTimer              | 20000                                                                                                                                     | The time in ms that it will take to reset the user inputs. After the timeout the user can enter the gestures again. Or they can unmount and remount the component by navigating away or something.                |
 | secretCode              | [ Directions.UP, Directions.UP, Directions.DOWN, Directions.DOWN, Directions.LEFT, Directions.RIGHT, Directions.LEFT, Directions.RIGHT, ] | The secret code that the user must match with their inputs. Defaults to the Konami code. You can import the `Directions` enum and create your own custom array of directions for a more personalised secret code. |
-
-Since this package relies on react-native-gesture-handler and react-native-reanimated please see the installation instructions for those if you're getting errors. The gesture handler for example requires that the app be wrapped in a `<GestureHandlerRootView />`.
 
 ```tsx
 import { EasterEgg } from 'react-native-easter-egg';
